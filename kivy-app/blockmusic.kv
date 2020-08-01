@@ -1,0 +1,155 @@
+#: kivy 1.11.0
+
+<LoginScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 1, 0, 1
+            Rectangle:
+                pos: root.pos
+                size: root.size
+    Label:
+        font_size: 40
+        text: "Musichain"
+        pos_hint: {'top': 1.2}
+        size: self.texture_size
+
+
+    Label:
+        font_size: 20
+        text: "Name: "
+        pos_hint: {'right': 0.8 ,'top': 1.1}
+        size: self.texture_size
+
+    TextInput:
+        id: name
+        hint_text: "Max 10-Chars"
+        font_size: 20
+        multiline: False
+        pos_hint: {'right': 0.7 ,'top': 0.63}
+        size_hint: 0.3,0.05
+
+    TextInput:
+        id: publickey
+        hint_text: "Public Key"
+        font_size: 15
+        multiline: False
+        pos_hint: {'right': 0.8 ,'top': 0.53}
+        size_hint: 0.65,0.05
+
+    Button:
+        text: "submit"
+        size_hint: 0.3,0.08
+        pos_hint: {'right': 0.45 ,'top': 0.4}
+        on_press: root.check_pass()
+
+    Button:
+        text: "Sign up"
+        size_hint: 0.3,0.08
+        pos_hint: {'right': 0.75 ,'top': 0.4}
+        on_release: root.signin()
+
+<HomeScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 1, 0, 1
+            Rectangle:
+                pos: root.pos
+                size: root.size
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Button:
+            text: "Refresh Music Listing"
+            font_size: 30
+            on_press: root.update_labels()
+
+        TextInput:
+            id: balance
+            hint_text: "Balance"
+            readonly: True
+            size_hint: 0.3,0.3
+
+        BoxLayout:
+            Label:
+                id: label1
+                text: 'Title'
+                color: 0,0,1,1
+                font_size: 20
+                size_hint: 1.7,None
+            Button:
+                id: buy1
+                text: 'buy'
+                size_hint: None, 0.5
+                on_press: root.buy_music()
+
+        BoxLayout:
+            Label:
+                id: label2
+                text: 'Title'
+                color: 0,0,1,1
+                font_size: 20
+                size_hint: 1.7,None
+            Button:
+                id: buy2
+                text: 'buy'
+                size_hint: None, 0.5
+                on_press: root.buy_music()
+
+        BoxLayout:
+            Label:
+                id: label3
+                text: 'Title'
+                color: 0,0,1,1
+                font_size: 20
+                size_hint: 1.7,None
+            Button:
+                id: buy3
+                text: 'buy'
+                size_hint: None, 0.5
+                on_press: root.buy_music()
+
+        BoxLayout:
+            Label:
+                id: buy4
+                id: label4
+                text: 'Title'
+                color: 0,0,1,1
+                font_size: 20
+                size_hint: 1.7,None
+            Button:
+                text: 'buy'
+                size_hint: None, 0.5
+                on_press: root.buy_music()
+
+        BoxLayout:
+            Button:
+                text: 'Your profile/upload/query/BUY COINS'
+                on_press: root.manager.current = 'profile'
+
+<ProfileScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        TextInput:
+            id: response
+            hint_text: 'Response'
+            readonly: True
+
+        Button:
+            text: 'Query your account'
+            on_release: root.query_account()
+
+        Button:
+            text: 'Query your Music'
+            on_release: root.query_musicPopup()
+
+        Button:
+            text: 'Upload your Music'
+            on_release: root.upload_musicPopup()
+
+        Button:
+            text: 'Buy Coins'
+            on_release: root.buy_coinPopup()
