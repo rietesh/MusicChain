@@ -20,17 +20,6 @@ iroha = Iroha('admin@mchain')
 net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
 
 
-def create_domain_and_asset():
-    commands = [
-        iroha.command('CreateDomain', domain_id='mchain', default_role='user'),
-        iroha.command('CreateAsset', asset_name='coin',
-                      domain_id='domain', precision=2)
-    ]
-    tx = IrohaCrypto.sign_transaction(
-        iroha.transaction(commands), ADMIN_PRIVATE_KEY)
-    send_transaction_and_print_status(tx)
-
-
 def add_coin_to_admin():
     tx = iroha.transaction([
         iroha.command('AddAssetQuantity',
