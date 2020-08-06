@@ -9,11 +9,11 @@
                        {
                           "addPeer":{
                              "peer":{
-				"address':"127.0.0.1:10001",
-				"peerKey":"1f805874458522350eab0795d49882990e2faab29d13d8dcbf6b065df50e37b3"
+                                "address":"127.0.0.1:10001",
+                                "peerKey":"32fdc9208b604ab5801fa19d360a10e3808fa76347f8d1c8bee8f7a744f22667"
                              }
                           }
-                       },
+                       }
                        {
                           "createRole":{
                              "roleName":"admin",
