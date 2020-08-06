@@ -10,19 +10,19 @@ if sys.version_info[0] < 3:
 
 IROHA_HOST_ADDR = os.getenv('IROHA_HOST_ADDR', '0.0.0.0')
 IROHA_PORT = os.getenv('IROHA_PORT', '50051')
-ADMIN_ACCOUNT_ID = os.getenv('ADMIN_ACCOUNT_ID', 'admin@test')
+ADMIN_ACCOUNT_ID = os.getenv('ADMIN_ACCOUNT_ID', 'admin@mchain')
 ADMIN_PRIVATE_KEY = os.getenv(
-    'ADMIN_PRIVATE_KEY', 'f101537e319568c765b2cc89698325604991dca57b9716b58016b253506cab70')
+    'ADMIN_PRIVATE_KEY', '505e3ee6da65ad07268236e49a302d982c027e353ee9bd0acb89b2c395151deb')
 
 user_private_key = IrohaCrypto.private_key()
 user_public_key = IrohaCrypto.derive_public_key(user_private_key)
-iroha = Iroha('admin@test')
+iroha = Iroha('admin@mchain')
 net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
 
 
 def create_domain_and_asset():
     commands = [
-        iroha.command('CreateDomain', domain_id='domain', default_role='user'),
+        iroha.command('CreateDomain', domain_id='mchain', default_role='user'),
         iroha.command('CreateAsset', asset_name='coin',
                       domain_id='domain', precision=2)
     ]
@@ -42,7 +42,7 @@ def add_coin_to_admin():
 
 def create_account(signin_name,pub_key):
     tx = iroha.transaction([
-        iroha.command('CreateAccount', account_name=signin_name, domain_id='test',
+        iroha.command('CreateAccount', account_name=signin_name, domain_id='mchain',
                       public_key=pub_key)
     ])
     IrohaCrypto.sign_transaction(tx, ADMIN_PRIVATE_KEY)
@@ -51,8 +51,8 @@ def create_account(signin_name,pub_key):
 
 def transfer_coin_from_admin_to_user(acc_id,amt):
     tx = iroha.transaction([
-        iroha.command('TransferAsset', src_account_id='admin@test', dest_account_id=acc_id+'@test',
-                      asset_id='coin#test', amount=amt)
+        iroha.command('TransferAsset', src_account_id='admin@mchain', dest_account_id=acc_id+'@mchain',
+                      asset_id='coin#mchain', amount=amt)
     ])
     IrohaCrypto.sign_transaction(tx, ADMIN_PRIVATE_KEY)
     net.send_tx(tx)
@@ -62,7 +62,7 @@ def get_account_assets(acc_name):
     """
     List all the assets of userone@domain
     """
-    acc_id = acc_name + '@test'
+    acc_id = acc_name + '@mchain'
     query = iroha.query('GetAccountAssets', account_id=acc_id)
     IrohaCrypto.sign_query(query, ADMIN_PRIVATE_KEY)
 
@@ -73,7 +73,7 @@ def get_account_assets(acc_name):
 
 
 def get_asset_transaction(acc_id,asset):
-    query = iroha.query('GetAccountAssetTransactions', account_id= acc_id+'@test', asset_id=asset+'#test', page_size= 5)
+    query = iroha.query('GetAccountAssetTransactions', account_id= acc_id+'@mchain', asset_id=asset+'#mchain', page_size= 5)
     IrohaCrypto.sign_query(query, ADMIN_PRIVATE_KEY)
     response = net.send_query(query)
     result = response.transactions_page_response.transactions
