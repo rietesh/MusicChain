@@ -9,9 +9,7 @@
                        {
                           "addPeer":{
                              "peer":{
-                                "address":"10.148.0.7:10001",
-                                "peerKey":"bddd58404d1315e0eb27902c5d7c8eb0602c16238f005773df406bc191308929",
-				"address':"10.148.0.8:10001",
+				"address':"127.0.0.1:10001",
 				"peerKey":"1f805874458522350eab0795d49882990e2faab29d13d8dcbf6b065df50e37b3"
                              }
                           }
@@ -59,7 +57,7 @@
                                 "can_receive",
                                 "can_remove_signatory",
                                 "can_set_quorum",
-				"can_create_asset"
+				"can_create_asset",
                                 "can_transfer"
                              ]
                           }
@@ -91,7 +89,7 @@
                        {
                           "createAccount":{
                              "accountName":"admin",
-                             "domainId":"test",
+                             "domainId":"mchain",
                              "publicKey":"42770f2d1c024797f13fc19da9b176d215d44253c80f27fe5c61fbaa15445371"
                           }
                        },
