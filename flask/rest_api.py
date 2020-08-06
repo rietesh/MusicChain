@@ -18,7 +18,7 @@ def hello_world():
 class ValidateUser(Resource):
     def post(self):
         print(request.form)
-        name = request.form['Name']+'@test'
+        name = request.form['Name']+'@mchain'
         private_key = request.form['priv_key']
         global priv_key
         priv_key =  private_key.encode()
@@ -106,5 +106,3 @@ api.add_resource(QueryMusic, '/QueryMusic/')
 api.add_resource(UploadMusic, '/UploadMusic/')
 api.add_resource(BuyCoin, '/BuyCoin/')
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0",port=8000,debug=True)
