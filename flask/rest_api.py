@@ -61,7 +61,7 @@ class GetLabels(Resource):
 
 class BuyMusic(Resource):
     def post(self):
-        d = irohaBUY.instantiate(request.form['src'], request.form['dest'], request.form['amt'], priv_key)
+        d = irohaBUY.instantiate(request.form['src'], request.form['dest'], request.form['amt'], request.form['priv_key'])
         return {'bought': "success"}
 
 
