@@ -87,6 +87,7 @@ class UploadMusic(Resource):
     def post(self):
         key = request.form['priv_key']
         p_key = key.encode()
+        print(p_key)
         d = irohaBUY.createAsset(request.form['asset'],'test',0,p_key,request.form['acc_name'])
         return {'upload': 'finished'}
 
