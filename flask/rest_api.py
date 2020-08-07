@@ -32,8 +32,8 @@ class ValidateUser(Resource):
 class CreateUser(Resource):
     def post(self):
         signin_name = request.form['SigninName']
-        priva_key = binascii.b2a_hex(os.urandom(32))
-        public_key = IrohaCrypto.derive_public_key(priv_key)
+        priva_key = IrohaCrypto.private_key()
+        public_key = IrohaCrypto.derive_public_key(priva_key)
         D = irohaSDK.create_account(signin_name,public_key)
         return {'priv_key': priva_key.decode("utf-8")}
 
