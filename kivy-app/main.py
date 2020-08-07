@@ -20,7 +20,7 @@ class LoginScreen(Screen):
         global pubkey
         pubkey = self.ids['publickey'].text
         Data = {"Name": name}
-        r = requests.post('http://35.247.137.14:8000/ValidateUser/', data=Data)
+        r = requests.post('http://34.87.108.156:8000/ValidateUser/', data=Data)
         D = r.json()
         if D['user'] == 'exist' and self.ids['publickey'].text:
             imp.sm.current = 'home'
@@ -32,7 +32,7 @@ class LoginScreen(Screen):
         priv_key = binascii.b2a_hex(os.urandom(32))
         public_key = IrohaCrypto.derive_public_key(priv_key)
         Data = {'SigninName': signin_name, 'pub_key': public_key}
-        r = requests.post('http://35.247.137.14:8000/CreateUser/', data=Data)
+        r = requests.post('http://34.87.108.156:8000/CreateUser/', data=Data)
         self.ids['publickey'].text = public_key
 
 
@@ -57,15 +57,15 @@ class LoginScreen(Screen):
 class HomeScreen(Screen):
     def buy_music(self):
         Data = {'src': name, 'dest': 'test', 'amt': 1, 'priv_key': pubkey}
-        r = requests.post('http://35.247.137.14:8000/BuyMusic/', data=Data)
+        r = requests.post('http://34.87.108.156:8000/BuyMusic/', data=Data)
         print(r.text)
 
     def update_labels(self):
         Data = {'acc_name': name}
-        r = requests.post('http://35.247.137.14:8000/GetBalance/', data=Data)
+        r = requests.post('http://34.87.108.156:8000/GetBalance/', data=Data)
         D = r.json()
         self.ids['balance'].text = 'Balance: '+ str(D['ans'])
-        rr = requests.get('http://35.247.137.14:8000/GetLabels/')
+        rr = requests.get('http://34.87.108.156:8000/GetLabels/')
         D = rr.json()
         D = random.sample(D,4)
         for i in range(len(D)):
@@ -75,12 +75,12 @@ class HomeScreen(Screen):
 class ProfileScreen(Screen):
     def query_account(self):
         Data = {'acc_id': name}
-        r = requests.get('http://35.247.137.14:8000/QueryAccount/', data = Data)
+        r = requests.get('http://34.87.108.156:8000/QueryAccount/', data = Data)
         self.ids['response'].text = r.text
 
     def query_music(self,instance):
         Data = {'acc_id': name,'asset': self.cahract}
-        d = requests.get('http://35.247.137.14:8000/QueryMusic/', data = Data)
+        d = requests.get('http://34.87.108.156:8000/QueryMusic/', data = Data)
         a = d.text
         re = a.replace('\n', ' ')
         self.ids['response'].text = re
@@ -104,7 +104,7 @@ class ProfileScreen(Screen):
 
     def upload_music(self,instance):
         Data = {'acc_name': name, 'asset': self.cahract, 'priv_key': pubkey}
-        d = requests.post('http://35.247.137.14:8000/UploadMusic/', data=Data)
+        d = requests.post('http://34.87.108.156:8000/UploadMusic/', data=Data)
         self.ids['response'].text = d.text
 
     def upload_musicPopup(self):
@@ -122,7 +122,7 @@ class ProfileScreen(Screen):
 
     def buy_coin(self,instance):
         Data = {'acc_name': name,'amt': self.cahract}
-        d = requests.post('http://35.247.137.14:8000/BuyCoin/', data=Data)
+        d = requests.post('http://34.87.108.156:8000/BuyCoin/', data=Data)
         self.ids['response'].text = d.text
 
     def buy_coinPopup(self):
