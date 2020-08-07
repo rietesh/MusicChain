@@ -8,7 +8,7 @@ if sys.version_info[0] < 3:
     raise Exception('Python 3 or a more recent version is required.')
 
 
-IROHA_HOST_ADDR = os.getenv('IROHA_HOST_ADDR', '0.0.0.0')
+IROHA_HOST_ADDR = os.getenv('IROHA_HOST_ADDR', '10.148.0.8')
 IROHA_PORT = os.getenv('IROHA_PORT', '50051')
 ADMIN_ACCOUNT_ID = os.getenv('ADMIN_ACCOUNT_ID', 'admin@mchain')
 ADMIN_PRIVATE_KEY = os.getenv(
