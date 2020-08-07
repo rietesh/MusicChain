@@ -27,7 +27,7 @@ def createAsset(asset_name,domain_id,precision,priv_key,name):
     net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
     tx = iroha.transaction([
         iroha.command('CreateAsset', asset_name=asset_name, domain_id=domain_id, precision=precision),
-        iroha.command('AddAssetQuantity', asset_id=assetname+'#mchain', amount='1000.00') 
+        iroha.command('AddAssetQuantity', asset_id=asset_name+'#mchain', amount='1000.00') 
     ])
     IrohaCrypto.sign_transaction(tx, priv_key)
     net.send_tx(tx)
