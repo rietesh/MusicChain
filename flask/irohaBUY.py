@@ -3,7 +3,7 @@ from iroha import IrohaCrypto
 from iroha import Iroha, IrohaGrpc
 
 
-IROHA_HOST_ADDR = os.getenv('IROHA_HOST_ADDR', '35.240.140.120')
+IROHA_HOST_ADDR = os.getenv('IROHA_HOST_ADDR', '10.148.0.8')
 IROHA_PORT = os.getenv('IROHA_PORT', '50051')
 ADMIN_ACCOUNT_ID = os.getenv('ADMIN_ACCOUNT_ID', 'admin@mchain')
 ADMIN_PRIVATE_KEY = os.getenv(
