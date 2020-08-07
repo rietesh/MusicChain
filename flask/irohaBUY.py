@@ -15,7 +15,7 @@ def instantiate(src,dest,amt,priv_key):
     net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
     tx = iroha.transaction([
         iroha.command('TransferAsset', src_account_id=src+'@mchain', dest_account_id=dest+'@mchain',
-                      asset_id='label1#mchain', amount=amt)
+                      asset_id='label1#mchain', amount='1')
     ])
     priv = priv_key
     IrohaCrypto.sign_transaction(tx, ADMIN_PRIVATE_KEY)
@@ -23,10 +23,10 @@ def instantiate(src,dest,amt,priv_key):
 
 
 def createAsset(asset_name,domain_id,precision,priv_key,name):
-    iroha = Iroha(name + '@mchain')
+    iroha = Iroha(name+'@mchain')
     net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
     tx = iroha.transaction([
-        iroha.command('CreateAsset', asset_name=asset_name, domain_id=domain_id, precision=precision),
+        iroha.command('CreateAsset', asset_name=asset_name, domain_id=domain_id, precision=0),
         iroha.command('AddAssetQuantity', asset_id=asset_name+'#mchain', amount='1000.00') 
     ])
     IrohaCrypto.sign_transaction(tx, priv_key)
