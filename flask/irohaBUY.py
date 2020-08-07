@@ -23,11 +23,12 @@ def instantiate(src,dest,amt,priv_key):
 
 
 def createAsset(asset_name,domain_id,precision,priv_key,name):
+    def createAsset(asset_name,domain_id,precision,priv_key,name):
     iroha = Iroha(name+'@mchain')
     net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
     tx = iroha.transaction([
-        iroha.command('CreateAsset', asset_name=asset_name, domain_id=domain_id, precision=0),
-        iroha.command('AddAssetQuantity', asset_id=asset_name+'#mchain', amount='1000.00') 
+        iroha.command('CreateAsset', asset_name=asset_name, domain_id='mchain', precision=precision),
+        iroha.command('AddAssetQuantity', asset_id=asset_name+'#mchain', amount='1000')
     ])
     IrohaCrypto.sign_transaction(tx, priv_key)
     net.send_tx(tx)
