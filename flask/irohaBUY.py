@@ -15,10 +15,10 @@ def instantiate(src,dest,amt,priv_key):
     net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
     tx = iroha.transaction([
         iroha.command('TransferAsset', src_account_id=src+'@mchain', dest_account_id=dest+'@mchain',
-                      asset_id='coin#mchain', amount=amt)
+                      asset_id='label1#mchain', amount=amt)
     ])
     priv = priv_key
-    IrohaCrypto.sign_transaction(tx, priv)
+    IrohaCrypto.sign_transaction(tx, ADMIN_PRIVATE_KEY)
     net.send_tx(tx)
 
 
