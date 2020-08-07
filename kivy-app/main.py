@@ -4,12 +4,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.core.window import Window
 from kivy.uix.popup import Popup
-from iroha import IrohaCrypto
 import requests
-import binascii
-import os
 import random
 
 
@@ -19,22 +15,18 @@ class LoginScreen(Screen):
         name = self.ids['name'].text
         global pubkey
         pubkey = self.ids['publickey'].text
-        Data = {"Name": name}
+        Data = {"Name": name,"priv_key": pubkey}
         r = requests.post('http://34.87.108.156:8000/ValidateUser/', data=Data)
         D = r.json()
-        if D['user'] == 'exist' and self.ids['publickey'].text:
+        if D['user'] == "exist" and self.ids['publickey'].text:
             imp.sm.current = 'home'
         else:
             imp.sm.current = 'login'
 
     def create_user(self,instance):
-        global priv_key
-        priv_key = binascii.b2a_hex(os.urandom(32))
-        public_key = IrohaCrypto.derive_public_key(priv_key)
-        Data = {'SigninName': signin_name, 'pub_key': public_key}
+        Data = {'SigninName': signin_name}
         r = requests.post('http://34.87.108.156:8000/CreateUser/', data=Data)
         self.ids['publickey'].text = public_key
-
 
     def on_text(self,instance,value):
         global signin_name
@@ -55,10 +47,12 @@ class LoginScreen(Screen):
 
 
 class HomeScreen(Screen):
+
     def buy_music(self):
-        Data = {'src': name, 'dest': 'test', 'amt': 1, 'priv_key': pubkey}
+        Data = {'src': 'admin', 'dest': name, 'amt': 1, 'priv_key': pubkey}
         r = requests.post('http://34.87.108.156:8000/BuyMusic/', data=Data)
-        print(r.text)
+        d = r.json()
+        self.ids['balance'].text = d['bought']
 
     def update_labels(self):
         Data = {'acc_name': name}
@@ -121,7 +115,7 @@ class ProfileScreen(Screen):
         popuptext.bind(text=self.on_text)
 
     def buy_coin(self,instance):
-        Data = {'acc_name': name,'amt': self.cahract}
+        Data = {'acc_name': name, 'amt': self.cahract}
         d = requests.post('http://34.87.108.156:8000/BuyCoin/', data=Data)
         self.ids['response'].text = d.text
 
@@ -141,7 +135,6 @@ class ProfileScreen(Screen):
 
 class BlockMusicApp(App):
     def build(self):
-        Window.size = (480,853)
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
         self.sm.add_widget(HomeScreen(name='home'))
