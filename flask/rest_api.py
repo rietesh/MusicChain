@@ -17,7 +17,6 @@ def hello_world():
 
 class ValidateUser(Resource):
     def post(self):
-        print(request.form)
         name = request.form['Name']+'@mchain'
         private_key = request.form['priv_key']
         global priv_key
@@ -86,7 +85,7 @@ class QueryMusic(Resource):
 
 class UploadMusic(Resource):
     def post(self):
-        d = irohaBUY.createAsset(request.form['asset'],'test',0,request.form['priv_key'],request.form['acc_name'])
+        d = irohaBUY.createAsset(request.form['asset'],'test',0,priv_key,request.form['acc_name'])
         return {'upload': 'finished'}
 
 
