@@ -23,7 +23,6 @@ def instantiate(src,dest,amt,priv_key):
 
 
 def createAsset(asset_name,domain_id,precision,priv_key,name):
-    print(priv_key)
     iroha = Iroha(name+'@mchain')
     net = IrohaGrpc('{}:{}'.format(IROHA_HOST_ADDR, IROHA_PORT))
     tx = iroha.transaction([
