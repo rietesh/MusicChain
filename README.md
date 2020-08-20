@@ -42,4 +42,9 @@ A screenshot of the app running on arm64-v8a architecture:
 A screenshot:
 ![Image windows](/images/Screenshot-windows.PNG)
 
-**Detailed Blog**: 
+**Detailed Blog**: at this link
+
+Working:
+
+![image gif](/images.musicchain.gif)
+
