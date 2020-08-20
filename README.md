@@ -24,7 +24,7 @@ Install Kivy: https://kivy.org/doc/stable/gettingstarted/installation.html
 * After succesfull completion the apk can be found in ./bin/
 
 A screenshot of the app running on arm64-v8a architecture:
-![Image screenshot](https://imgur.com/a/89S3cg8)
+![Image screenshot](/images/Screenshot_Android.jpg)
 
 ### Steps to Create Windows application
 
@@ -40,6 +40,6 @@ A screenshot of the app running on arm64-v8a architecture:
 * The compiled package will be in the app\dist\musicchain directory
 
 A screenshot:
-![Image windows](https://imgur.com/a/3Q0JYUF)
+![Image windows](/images/Screenshot-windows.PNG)
 
 **Detailed Blog**: 
