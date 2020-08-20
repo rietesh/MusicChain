@@ -23,8 +23,8 @@ Install Kivy: https://kivy.org/doc/stable/gettingstarted/installation.html
 * **Note:** You can change the Android architecture to suit your needs in buildozer.spec line:222
 * After succesfull completion the apk can be found in ./bin/
 
-A screenshot of the app running on arm64-v8a architecture
-![Image screenshot] (https://imgur.com/a/89S3cg8)
+A screenshot of the app running on arm64-v8a architecture:
+![Image screenshot](https://imgur.com/a/89S3cg8)
 
 ### Steps to Create Windows application
 
@@ -39,5 +39,7 @@ A screenshot of the app running on arm64-v8a architecture
 
 * The compiled package will be in the app\dist\musicchain directory
 
+A screenshot:
+![Image windows](https://imgur.com/a/3Q0JYUF)
 
 **Detailed Blog**: 
