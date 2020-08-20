@@ -4,8 +4,8 @@ from kivy_deps import sdl2, glew
 block_cipher = None
 
 
-a = Analysis(['C:\\Users\\Baba_dook\\Desktop\\musicchain\\exe\\main.py'],
-             pathex=['C:\\Users\\Baba_dook\\Desktop\\musicchain\\app'],
+a = Analysis(['add\\your\\path\\musicchain\\kivy-app\\main.py'],
+             pathex=['add\\your\\path\\musicchain\\app'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -28,11 +28,11 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True )
-coll = COLLECT(exe, Tree('C:\\Users\\Baba_dook\\Desktop\\musicchain\\exe'),
+coll = COLLECT(exe, Tree('add\\your\\path\\musicchain\\kivy-app'),
                a.binaries,
                a.zipfiles,
                a.datas,
-			   *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
+	       *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
                strip=False,
                upx=True,
                upx_exclude=[],
