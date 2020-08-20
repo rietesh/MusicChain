@@ -24,6 +24,7 @@ Install Kivy: https://kivy.org/doc/stable/gettingstarted/installation.html
 * After succesfull completion the apk can be found in ./bin/
 
 A screenshot of the app running on arm64-v8a architecture:
+
 ![Image screenshot](/images/Screenshot_Android.jpg)
 
 ### Steps to Create Windows application
