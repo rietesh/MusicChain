@@ -1,6 +1,6 @@
 # MusicChain
 
-A crossplatform Blockchain app devloped on top of Hyperledger Iroha using Kivy library.    
+A cross-platform Blockchain app developed on top of Hyperledger Iroha using Kivy library.    
 
 Install Kivy: https://kivy.org/doc/stable/gettingstarted/installation.html
 * **Note:** Tested on python 3.6
