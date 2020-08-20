@@ -41,6 +41,7 @@ A screenshot of the app running on arm64-v8a architecture:
 * The compiled package will be in the app\dist\musicchain directory
 
 A screenshot:
+
 ![Image windows](/images/Screenshot-windows.PNG)
 
 **Detailed Blog**: at this link
