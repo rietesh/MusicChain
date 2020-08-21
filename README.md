@@ -48,5 +48,5 @@ A screenshot:
 
 Working:
 
-![image gif](/images/MusicChain.gif)
+![image gif](/images/MusicChian_gif.gif)
 
