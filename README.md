@@ -42,7 +42,7 @@ A screenshot of the app running on arm64-v8a architecture:
 
 A screenshot:
 
-![Image windows](/images/Screenshot-W.PNG)
+![Image windows](/images/Screenshot_W.PNG)
 
 **Detailed Blog**: at this link
 
